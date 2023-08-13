@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title %}Posts{% endblock %}
+
+{% block content %}
+<div class="row">
+  {% for post in posts %}
+  <div class="col-md-4">
+    <div class="card mb-3">
+      <h3 class="card-header">{{post.title|title}}</h3>
+     <img src="{{post.image.url}}" alt="{{post.title|title}}">
+      <div class="card-body">
+        <p class="card-text">{{post.description|title|truncatechars:20 }}</p>
+      </div>
+   
+      <div class="card-body">
+        <a href="#" class="card-link">Read More</a>
+        <a href="#" class="card-link">Delete</a>
+        <a href="#" class="card-link">Edit</a>
+      </div>
+      <div class="card-footer text-muted">
+       {{post.timestamp|timesince}}
+      </div>
+    </div>
+
+  </div>
+  {% endfor %}
+  
+</div>
+
+{% endblock %}
