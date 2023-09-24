@@ -3,6 +3,23 @@
 
 {% block content %}
 <div class="row">
+  <div class="col-md-12 mb-3">
+  {% if messages %}
+{% for message in messages %}
+<div class="alert alert-{{ message.tags }} alert-dismissible" role="alert">
+    <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close">
+    </button>
+    {{ message }}
+</div>
+{% endfor %}
+{% endif %}
+  </div>
+  <div class="col-md-12 mb-3">
+    <a href="{% url 'posts:create_post' %}" class="btn btn-success">Create Post</a>
+  <hr>
+
+    <small>Number of Posts: {{number_of_posts}}</small>
+  </div>
   {% for post in posts %}
   <div class="col-md-4">
     <div class="card mb-3">
@@ -13,7 +30,7 @@
       </div>
    
       <div class="card-body">
-        <a href="#" class="card-link">Read More</a>
+        <a href="{% url 'posts:post_details' post.id %}" class="card-link">Read More</a>
         <a href="#" class="card-link">Delete</a>
         <a href="#" class="card-link">Edit</a>
       </div>

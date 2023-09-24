@@ -3,5 +3,6 @@
 
 {% block content %}
 <h1>Post Details</h1>
-
+{{post.title}}
+<a href="{% url 'posts:home' %}">back</a>
 {% endblock %}
